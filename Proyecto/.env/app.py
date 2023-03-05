@@ -1,17 +1,31 @@
 from flask import Flask
+import json
+import re
+import mysql.connector
 
 application= Flask(__name__)
 
-@application.route('/')
-def hello_word():
-    return "<h1>Hello World</h1>"
+class Usuario():
+    def __init__(self, name, password, birthdate):
+        self.name= name
+        self.password= password
+        self.birthdate= birthdate
 
-@application.route('/usuarios/<username>')
-def return_username(username):
-    return username
+usuarios= {}
 
-@application.post('/')
-def hello_world_post():
-    print("Hola desde post")
+@application.route('/user/<name>/<password>/<correo>/<birthdate>')
+def registrarUser(name,password,correo,birthdate):
+    usuarios["name"]= name
+    usuarios["password"]= password
+    usuarios["correo"]= correo
+    usuarios["nacimiento"]= birthdate
+    return json.dumps(usuarios)
+    
+    
+@application.route('/user')
+def getUsers():
+    return json.dumps(usuarios["name"])+json.dumps(usuarios["nacimiento"])
 
-""" get set post delete """
+@application.route('/user/detalles')
+def getUsersDetails():
+    return json.dumps(usuarios["name"])+json.dumps(usuarios["correo"])+json.dumps(usuarios["nacimiento"])
