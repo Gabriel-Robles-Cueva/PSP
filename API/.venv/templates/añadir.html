@@ -1,0 +1,16 @@
+{% with messages= get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p>{{message}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form action="/object-added" method="post">
+
+    <input type="text" name="nombre" placeholder="Introduce el nombre"/>
+    <input type="text" name="tipo" placeholder="Introduce el tipo"/>
+    <input type="number" name="precio" placeholder="Introduce el precio"/>
+    <button type="submit">SAVE</button>
+    
+</form>
