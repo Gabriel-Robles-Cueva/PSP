@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POKEOBJECT API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body background="https://nintenduo.com/wp-content/uploads/2022/12/Pokemon-GO-Novedad-Objetos-02-1200x900.webp" style="background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
+    <div class="container" align="center">
+        <h1 align="center">POKEMMO-OBJECTS API</h1>
+
+        {% with messages= get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>{{message}}</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <br><br>
+
+        <div style="background: rgb(255, 0, 0); opacity: 0.7;" align="left">
+            <h2 align="center" style="color: white;">FUNCIONAMIENTO DE LA API</h2>
+            <p style="color: white;">Esta es una API sobre los objetos de pokémon pensada para el uso de estudio para combates Pokémon aqui se pueden ver los objetos del juego, puedes filtrar según lo que mas te interese buscar y puedes mirar su precio de mercado en POKEMMO.</p>
+            <p style="color: white;">Cada boton lleva un formulario para llevar a cabo su función.</p>
+            <ol class="list-group list-group-numbered" style="background: rgb(255, 0, 0);">
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold"><a href="/add-object" class="btn btn-danger">AÑADIR OBJETO</a></div>
+                  Página en la que hay un formulario para introducir un objeto con sus datos y debajo una tabla donde se puede comprobar que se ha añadido correctamente y tambien puedes eliminar los objetos.
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">VER LISTA DE OBJETOS</div>
+                  Aquí puedes ver la lista entera de objetos en modo JSON.
+                  <br>
+                  <a href='/get-objects'>http://127.0.0.1:5000/get-objects</a>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">VER LISTA DE OBJETOS FILTRADO POR NOMBRE</div>
+                  Aquí puedes ver la lista entera de objetos por nombre en modo JSON.
+                  <br>
+                  <a href='/get-objects-by-name?nombre=Pocion'>http://127.0.0.1:5000/get-objects-by-name?nombre=Pocion</a>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">VER LISTA DE OBJETOS FILTRADO POR TIPO</div>
+                  Aquí puedes ver la lista entera de objetos por tipo en modo JSON.
+                  <br>
+                  <a href='/get-objects-by-tipo?tipo=Curacion'>http://127.0.0.1:5000/get-objects-by-tipo?tipo=Curacion</a>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">ELIMINAR OBJETOS POR NOMBRE</div>
+                  Aquí puedes borrar un objeto por nombre, debes cambiar "EJEMPLO" por el nombre del objeto.
+                  <br>
+                  <p style="color: blue;">http://127.0.0.1:5000/delete-object-by-name?nombre=EJEMPLO</p>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">EDITAR TIPO DE UN OBJETO</div>
+                  Aquí puedes editar el tipo de un objeto.
+                  <br>
+                  <a href='/edit-object-type?id=9&tipo=Bayas'>http://127.0.0.1:5000/edit-object-type?id=9&tipo=Bayas</a>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start" style="background: rgb(255, 0, 0); color: white;">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">EDITAR PRECIO DE UN OBJETO</div>
+                  Aquí puedes editar el precio de un objeto.
+                  <br>
+                  <a href='/edit-object-price?id=7&precio=200'>http://127.0.0.1:5000/edit-object-price?id=7&precio=200</a>
+                </div>
+              </li>
+            </ol>
+        </div>
+
+    </div>
+</body>
+</html>
